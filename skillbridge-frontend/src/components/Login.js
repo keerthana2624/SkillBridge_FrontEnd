@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import GoogleLoginButton from './GoogleLoginButton';
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -13,24 +11,13 @@ function Login() {
     setCredentials((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/login', credentials); // Backend endpoint
-      // Assuming response includes token
-      localStorage.setItem('token', response.data.token);
-      alert('Login successful');
-    } catch (error) {
-      console.error('Error during login', error);
-    }
-  };
-
-  const handleGoogleLogin = (response) => {
-    // Send Google login response to backend for verification
-  };
-
-  const handleGoogleLoginError = () => {
-    alert('Google login failed');
+    // Simulate a successful login
+    const fakeToken = 'fake-jwt-token'; // In real scenarios, this would be from the backend
+    localStorage.setItem('token', fakeToken); // Store the token
+    alert('Login successful');
+    window.location.href = '/profile'; // Redirect to Profile page after login
   };
 
   return (
@@ -55,8 +42,6 @@ function Login() {
         />
         <button type="submit">Login</button>
       </form>
-
-      <GoogleLoginButton onSuccess={handleGoogleLogin} onError={handleGoogleLoginError} />
     </div>
   );
 }

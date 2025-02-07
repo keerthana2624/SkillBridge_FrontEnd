@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 function Profile() {
   const [profile, setProfile] = useState({
     username: '',
     email: '',
-    role: 'user',
     avatarUrl: '',
   });
 
-  // Fetch user profile on component mount
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      axios
-        .get('/api/profile', {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => setProfile(response.data))
-        .catch((error) => console.error(error));
+    const storedUser = localStorage.getItem('userData');
+    if (token && storedUser) {
+      setProfile(JSON.parse(storedUser)); // Set user profile data from localStorage
+    } else {
+      window.location.href = '/login'; // Redirect to login if no token is found
     }
   }, []);
 
@@ -27,19 +22,10 @@ function Profile() {
     setProfile((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
-    try {
-      await axios.put('/api/profile', profile, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      alert('Profile updated');
-    } catch (error) {
-      console.error('Error updating profile', error);
-    }
+    localStorage.setItem('userData', JSON.stringify(profile)); // Save updated profile data
+    alert('Profile updated');
   };
 
   return (
@@ -71,3 +57,4 @@ function Profile() {
   );
 }
 
+export default Profile;
