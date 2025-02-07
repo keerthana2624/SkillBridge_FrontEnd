@@ -1,0 +1,107 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container for the login form */
+  div {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  /* Heading */
+  h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  /* Styling for the input fields */
+  input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+  }
+  
+  /* Focus effect for input fields */
+  input:focus {
+    border-color: #4caf50;
+    outline: none;
+  }
+  
+  /* Submit button styling */
+  button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the submit button */
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Register Link Styles */
+  .register-link {
+    margin-top: 15px;
+  }
+  
+  .register-link button {
+    background-color: transparent;
+    color: #4caf50;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+  }
+  
+  /* Hover effect for the register link */
+  .register-link button:hover {
+    color: #388e3c;
+    text-decoration: underline;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
+    div {
+      padding: 30px 20px;
+      width: 90%;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    input,
+    button[type="submit"] {
+      padding: 14px;
+      font-size: 15px;
+    }
+  }
+  

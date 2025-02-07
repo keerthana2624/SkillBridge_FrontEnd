@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for redirection
+import './Login.css';
 
 function Login() {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate(); // Create navigate function
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +21,11 @@ function Login() {
     const fakeToken = 'fake-jwt-token'; // In real scenarios, this would be from the backend
     localStorage.setItem('token', fakeToken); // Store the token
     alert('Login successful');
-    window.location.href = '/profile'; // Redirect to Profile page after login
+    navigate('/profile'); // Redirect to Profile page after login
+  };
+
+  const handleRegisterClick = () => {
+    navigate('/register'); // Redirect to Register page
   };
 
   return (
@@ -42,6 +50,11 @@ function Login() {
         />
         <button type="submit">Login</button>
       </form>
+
+      {/* Register Button */}
+      <div className="register-link">
+        <button onClick={handleRegisterClick}>Don't have an account? Register</button>
+      </div>
     </div>
   );
 }
